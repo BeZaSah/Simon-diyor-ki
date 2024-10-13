@@ -1,29 +1,43 @@
 body {
   text-align: center;
-  background-color: #011F3F;
+  background-color: #011f3f;
+  margin: 0;
+  min-height: 100vh; /* Ekran yüksekliği boyunca içerik olacak */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* İçeriği dikey olarak ortala */
+  align-items: center; /* Yatay olarak ortala */
 }
 
 #level-title {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 2rem;
-  margin:  5%;
-  color: #FEF2BF;
+  font-family: "Press Start 2P", cursive;
+  font-size: 20px;
+  margin: 5%;
+  color: #fef2bf;
+  flex-grow: 0;
 }
 
 .container {
-  display: block;
   width: 50%;
-  margin: auto;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: 60vh; /* Minimum yüksekliği belirliyoruz ki, ekrana sığsın */
 }
 
 .btn {
   margin: 25px;
   display: inline-block;
-  height: 200px;
-  width: 200px;
+  height: 180px;
+  width: 180px;
   border: 10px solid black;
   border-radius: 20%;
+  transition: transform 0.2s ease; /* Butonlara tıklama animasyonu ekler */
+}
+
+.btn:active {
+  transform: scale(0.95); /* Butona basıldığında küçülme efekti */
 }
 
 .game-over {
@@ -33,21 +47,97 @@ body {
 
 .red {
   background-color: red;
+  width: 180px;
 }
 
 .green {
   background-color: green;
+  width: 180px;
 }
 
 .blue {
   background-color: blue;
+  width: 180px;
 }
 
 .yellow {
   background-color: yellow;
+  width: 180px;
 }
 
 .pressed {
   box-shadow: 0 0 20px white;
   background-color: grey;
+}
+
+/* Küçük mobil cihazlar (480px ve altı) */
+@media (max-width: 480px) {
+  .container {
+    width: 90%;
+  }
+
+  .btn {
+    height: 80px;
+    width: 80px;
+  }
+}
+
+/* Orta boy mobil cihazlar (481px - 768px arası) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .container {
+    width: 80%;
+  }
+
+  .btn {
+    height: 100px;
+    width: 100px;
+  }
+}
+
+/* Tablet boyutları (769px - 1024px arası) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    width: 70%; /* Tablet için container biraz daha geniş olabilir */
+  }
+
+  .btn {
+    height: 120px;
+    width: 120px;
+  }
+
+  #level-title {
+    font-size: 1rem; /* Tablet için başlık boyutunu biraz küçülttük */
+  }
+}
+
+/* Küçük masaüstü cihazlar (1025px - 1200px arası) */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .container {
+    width: 60%; /* Küçük masaüstü cihazlarda container daha dar olabilir */
+  }
+
+  .btn {
+    height: 150px;
+    width: 150px;
+  }
+
+  #level-title {
+    font-size: 1.5rem; /* Küçük masaüstü için başlık boyutu normal olabilir */
+  }
+}
+
+/* Büyük masaüstü cihazlar (1201px ve üzeri) */
+@media (min-width: 1201px) {
+  .container {
+    width: 50%;
+  }
+
+  .btn {
+    height: 180px;
+    width: 180px;
+  }
+
+  #level-title {
+    font-size: 1.8rem; /* Büyük ekranlarda başlık boyutu daha büyük olabilir */
+  }
 }
